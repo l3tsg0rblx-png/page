@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>no está - liebestraum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Reenie+Beanie&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tinta:#1c2737;
+  --azul:#2e4460;
+  --lapiz:#3b5778;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+html{overflow-x:hidden}
+body{
+  min-height:100vh;
+  background-color:#111923;
+  background-image:
+    radial-gradient(ellipse 70% 55% at 50% 35%, #263850 0%, transparent 70%),
+    radial-gradient(ellipse at 90% 100%, #1b2a3e 0%, transparent 55%);
+  color:var(--tinta);
+  font-family:'Special Elite','Courier New',monospace;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:60px 16px;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+  opacity:.4;
+  z-index:1;
+}
+.oculto{position:absolute;width:0;height:0;overflow:hidden}
+
+.fondo{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.fondo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at 50% 45%,transparent 38%,rgba(4,7,11,.72) 100%);
+}
+.luz{
+  position:absolute;
+  top:-14%;
+  right:-12%;
+  width:62vw;
+  height:76vh;
+  transform:skewX(14deg) rotate(5deg);
+  background:
+    linear-gradient(90deg,transparent 48.6%,#0d141d 48.6% 51.4%,transparent 51.4%),
+    linear-gradient(0deg,transparent 46.5%,#0d141d 46.5% 52%,transparent 52%),
+    radial-gradient(ellipse at center,rgba(130,160,200,.42),rgba(80,110,150,.14) 58%,transparent 74%);
+  filter:blur(16px);
+  opacity:.5;
+}
+.suelto{
+  position:absolute;
+  width:210px;
+  height:270px;
+  background:linear-gradient(170deg,#62758a,#4b5d71);
+  filter:url(#roto2) blur(1.8px);
+  opacity:.45;
+}
+.suelto::after{
+  content:"";
+  position:absolute;
+  inset:44px 28px 56px;
+  background:repeating-linear-gradient(to bottom,rgba(18,27,40,.45) 0 2px,transparent 2px 15px);
+}
+.suelto.a{bottom:-70px;right:6%;transform:rotate(19deg)}
+.suelto.b{top:10%;left:-60px;transform:rotate(-14deg);opacity:.35}
+.cine{
+  position:absolute;
+  top:62%;
+  left:-120px;
+  width:520px;
+  height:86px;
+  transform:rotate(18deg);
+  background-color:#0a0f15;
+  background-image:repeating-linear-gradient(90deg,transparent 0 5px,rgba(75,100,132,.38) 5px 97px,transparent 97px 102px);
+  background-size:100% 50px;
+  background-position:0 18px;
+  background-repeat:no-repeat;
+  opacity:.6;
+  filter:blur(1.4px);
+}
+.cine::before,.cine::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:8px;
+  background:repeating-linear-gradient(90deg,rgba(165,185,205,.38) 0 9px,transparent 9px 21px);
+}
+.cine::before{top:5px}
+.cine::after{bottom:5px}
+
+.lluvia{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40}
+
+.mesa{
+  position:relative;
+  z-index:2;
+  width:min(520px,100%);
+}
+.pedazo{
+  position:relative;
+  isolation:isolate;
+  padding:64px 44px 70px;
+  text-align:center;
+  transform:rotate(1.6deg);
+}
+.hojita{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  filter:url(#roto) drop-shadow(8px 16px 18px rgba(0,0,0,.5));
+}
+.hojita::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-color:#c8d2db;
+  background-image:
+    radial-gradient(circle at 22% 30%,rgba(80,100,125,.14) 0 3px,transparent 4px),
+    radial-gradient(circle at 78% 64%,rgba(80,100,125,.12) 0 5px,transparent 7px),
+    radial-gradient(ellipse at 100% 100%,rgba(40,60,90,.25),transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .28 0 0 0 0 .38 0 0 0 .2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E"),
+    linear-gradient(172deg,#d3dce3 0%,#bfcad4 65%,#aebbc7 100%);
+  clip-path:polygon(0 0,100% 0,100% 86%,96% 90%,93% 87%,89% 92%,85% 88%,82% 93%,77% 90%,73% 95%,68% 91%,64% 94%,59% 89%,55% 93%,50% 90%,46% 96%,41% 92%,37% 95%,32% 90%,28% 93%,23% 89%,19% 94%,14% 90%,10% 93%,6% 88%,3% 91%,0 87%);
+}
+.cinta{
+  position:absolute;
+  top:-12px;
+  left:50%;
+  width:120px;
+  height:32px;
+  margin-left:-60px;
+  transform:rotate(-4deg);
+  background:rgba(214,224,232,.62);
+  clip-path:polygon(3% 0,97% 4%,94% 18%,100% 32%,95% 50%,99% 68%,94% 84%,98% 100%,2% 96%,6% 80%,0 64%,5% 46%,1% 28%,6% 12%);
+  z-index:3;
+}
+
+.numero{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:.04em;
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:clamp(5rem,22vw,8.5rem);
+  line-height:1;
+  color:var(--azul);
+  text-shadow:0 0 1px rgba(46,68,96,.6),1px 1px 0 rgba(28,39,55,.18);
+}
+.numero span{display:inline-block}
+.numero span:nth-child(1){transform:rotate(-4deg)}
+.numero span:nth-child(2){transform:translateY(6px) rotate(2deg)}
+.numero .suelta{
+  margin-left:.12em;
+  transform-origin:0 8%;
+  animation:cuelga 4.2s ease-in-out infinite;
+}
+@keyframes cuelga{
+  0%,100%{transform:rotate(16deg) translateY(2px)}
+  50%{transform:rotate(22deg) translateY(4px)}
+}
+.lapiz{
+  font-family:'Reenie Beanie',cursive;
+  color:var(--lapiz);
+  line-height:1;
+}
+.debajo{
+  display:inline-block;
+  font-size:1.8rem;
+  margin:14px 0 26px 50px;
+  transform:rotate(-3deg);
+}
+.texto{
+  max-width:32ch;
+  margin:26px auto 32px;
+  font-size:1.05rem;
+  letter-spacing:.06em;
+  line-height:1.8;
+  color:#25354a;
+}
+.boton{
+  display:inline-block;
+  font-family:'Special Elite','Courier New',monospace;
+  font-size:.95rem;
+  letter-spacing:.12em;
+  color:var(--azul);
+  text-decoration:none;
+  padding:8px 26px 7px;
+  border:1.6px solid var(--azul);
+  border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  background:rgba(255,255,255,.25);
+  transform:rotate(-1.5deg);
+  transition:background .2s,color .2s,transform .2s;
+}
+.boton:hover,.boton:focus-visible{background:var(--azul);color:#e1e7ec;transform:rotate(1deg) scale(1.04);outline:none}
+
+@media (max-width:560px){
+  .pedazo{padding:56px 22px 64px}
+  .debajo{margin-left:20px;font-size:1.55rem}
+  .luz{width:120vw}
+}
+
+*{cursor:url('/cursor.png') 0 0,auto !important}
+a,button{cursor:url('/cursor.png') 0 0,pointer !important}
+</style>
+</head>
+<body>
+<svg class="oculto" aria-hidden="true" focusable="false">
+  <filter id="roto" x="-6%" y="-5%" width="114%" height="112%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04 0.06" numOctaves="5" seed="11" result="ruido"/>
+    <feDisplacementMap in="SourceGraphic" in2="ruido" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="roto2" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05 0.07" numOctaves="5" seed="37" result="ruido"/>
+    <feDisplacementMap in="SourceGraphic" in2="ruido" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<div class="fondo" aria-hidden="true">
+  <div class="luz"></div>
+  <div class="suelto a"></div>
+  <div class="suelto b"></div>
+  <div class="cine"></div>
+</div>
+
+<canvas class="lluvia" id="lluvia" aria-hidden="true"></canvas>
+
+<div class="mesa">
+  <main class="pedazo">
+    <div class="hojita"></div>
+    <div class="cinta"></div>
+    <h1 class="numero" aria-label="404"><span>4</span><span>0</span><span class="suelta">4</span></h1>
+    <p class="texto">No encontrado</p>
+    <a class="boton" href="/">volver</a>
+  </main>
+</div>
+
+<script>
+var cielo = document.getElementById('lluvia');
+var tiza = cielo.getContext('2d');
+var gotas = [];
+var anchoC = 0, altoC = 0;
+var sesgo = .14;
+var antes = 0;
+
+function gota(arriba) {
+  var z = Math.random();
+  return {
+    x: Math.random() * (anchoC + 160) - 40,
+    y: arriba ? -Math.random() * altoC * .3 : Math.random() * altoC,
+    v: 7 + z * 13,
+    l: 9 + z * 24,
+    a: .07 + z * .23,
+    w: .5 + z * 1
+  };
+}
+
+function medir() {
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  anchoC = window.innerWidth;
+  altoC = window.innerHeight;
+  cielo.width = anchoC * dpr;
+  cielo.height = altoC * dpr;
+  tiza.setTransform(dpr, 0, 0, dpr, 0, 0);
+  var cuantas = Math.round(anchoC * altoC / 6500);
+  while (gotas.length < cuantas) gotas.push(gota(false));
+  gotas.length = cuantas;
+}
+
+function llover(t) {
+  var paso = antes ? Math.min((t - antes) / 16.7, 3) : 1;
+  antes = t;
+  tiza.clearRect(0, 0, anchoC, altoC);
+  tiza.lineCap = 'round';
+  for (var i = 0; i < gotas.length; i++) {
+    var g = gotas[i];
+    g.y += g.v * paso;
+    g.x -= g.v * sesgo * paso;
+    if (g.y - g.l > altoC || g.x < -30) { gotas[i] = gota(true); continue; }
+    tiza.strokeStyle = 'rgba(190,208,228,' + g.a + ')';
+    tiza.lineWidth = g.w;
+    tiza.beginPath();
+    tiza.moveTo(g.x, g.y);
+    tiza.lineTo(g.x + g.l * sesgo, g.y - g.l);
+    tiza.stroke();
+  }
+  requestAnimationFrame(llover);
+}
+
+medir();
+window.addEventListener('resize', medir);
+requestAnimationFrame(llover);
+</script>
+</body>
+</html>
