@@ -1,1 +1,686 @@
-pagina d gabriel y paweko
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>liebestraum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Reenie+Beanie&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tinta:#1c2737;
+  --azul:#2e4460;
+  --lapiz:#3b5778;
+  --papel:#c8d2db;
+  --gris:#5f656b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{
+  min-height:100vh;
+  background-color:#121a24;
+  background-image:
+    radial-gradient(ellipse 70% 55% at 50% 30%, #283a51 0%, transparent 70%),
+    radial-gradient(ellipse at 90% 100%, #1b2a3e 0%, transparent 55%);
+  color:var(--tinta);
+  font-family:'Special Elite','Courier New',monospace;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:80px 16px 90px;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+  opacity:.4;
+  z-index:0;
+}
+.oculto{position:absolute;width:0;height:0;overflow:hidden}
+
+.mesa{
+  position:relative;
+  width:min(660px,100%);
+  z-index:1;
+}
+.retazo{
+  position:absolute;
+  top:-14px;
+  left:-16px;
+  right:20px;
+  bottom:26px;
+  transform:rotate(3.2deg);
+  z-index:0;
+}
+.retazo::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(175deg,#a5b3c0 0%,#8e9dac 100%);
+  filter:url(#roto) drop-shadow(4px 10px 16px rgba(0,0,0,.45));
+}
+
+.hoja{
+  position:relative;
+  z-index:1;
+  isolation:isolate;
+  padding:64px 52px 52px;
+  text-align:center;
+  transform:rotate(-1.2deg);
+}
+.hoja::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background-color:var(--papel);
+  background-image:
+    linear-gradient(to bottom,transparent 49.7%,rgba(255,255,255,.14) 50%,rgba(30,45,65,.06) 50.3%,transparent 50.8%),
+    radial-gradient(circle at 18% 72%,rgba(80,100,125,.14) 0 3px,transparent 4px),
+    radial-gradient(circle at 83% 41%,rgba(80,100,125,.12) 0 2px,transparent 3px),
+    radial-gradient(circle at 64% 88%,rgba(80,100,125,.1) 0 5px,transparent 7px),
+    radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.25),transparent 60%),
+    radial-gradient(ellipse at 100% 100%,rgba(40,60,90,.22),transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .28 0 0 0 0 .38 0 0 0 .2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E"),
+    linear-gradient(172deg,#d3dce3 0%,#bfcad4 65%,#aebbc7 100%);
+  filter:url(#roto) drop-shadow(8px 16px 22px rgba(0,0,0,.55));
+}
+
+.cinta{
+  position:absolute;
+  top:-12px;
+  left:30px;
+  width:118px;
+  height:32px;
+  transform:rotate(-12deg);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)' opacity='.18'/%3E%3C/svg%3E"),
+    rgba(214,224,232,.62);
+  clip-path:polygon(3% 0,97% 4%,94% 18%,100% 32%,95% 50%,99% 68%,94% 84%,98% 100%,2% 96%,6% 80%,0 64%,5% 46%,1% 28%,6% 12%);
+  box-shadow:0 1px 1px rgba(0,0,0,.08);
+  z-index:3;
+}
+.clip{
+  position:absolute;
+  top:-26px;
+  right:74px;
+  width:26px;
+  height:74px;
+  transform:rotate(9deg);
+  z-index:3;
+  overflow:visible;
+}
+.clip path{fill:none;stroke-linecap:round;stroke-width:2.6}
+.clip .sombra{stroke:rgba(20,30,45,.25);transform:translate(2px,2px)}
+.clip .alambre{stroke:#a7b3be}
+.mancha{
+  position:absolute;
+  top:96px;
+  right:30px;
+  width:100px;
+  height:100px;
+  pointer-events:none;
+  z-index:0;
+  overflow:visible;
+}
+
+h1{
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(2.7rem,9vw,4.6rem);
+  color:var(--azul);
+  letter-spacing:.015em;
+  line-height:1;
+  transform:rotate(1.3deg) translateX(-6px);
+  text-shadow:0 0 1px rgba(46,68,96,.6),1px 1px 0 rgba(28,39,55,.18);
+}
+.lapiz{
+  font-family:'Reenie Beanie',cursive;
+  color:var(--lapiz);
+  line-height:1;
+}
+.debajo{
+  display:inline-block;
+  font-size:1.7rem;
+  margin:8px 0 38px 80px;
+  transform:rotate(-4deg);
+}
+
+.sinopsis{
+  position:relative;
+  margin:0 auto 44px;
+  max-width:50ch;
+  text-align:left;
+  transform:rotate(-.5deg);
+}
+.sinopsis h2{
+  font-family:'IM Fell English',serif;
+  font-weight:400;
+  font-size:1.7rem;
+  color:var(--azul);
+  transform:rotate(-1.4deg);
+  transform-origin:left;
+}
+.trazo{
+  display:block;
+  width:118px;
+  height:10px;
+  margin:2px 0 14px -2px;
+  fill:none;
+  stroke:var(--lapiz);
+  stroke-width:1.8;
+  stroke-linecap:round;
+  opacity:.8;
+}
+.sinopsis p{
+  font-size:.95rem;
+  line-height:1.8;
+  color:#25354a;
+  text-indent:2em;
+}
+
+.ver{
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:2px;
+  margin-bottom:16px;
+}
+.ver .lapiz{
+  font-size:2.7rem;
+  transform:rotate(-3deg);
+}
+.flecha{
+  width:60px;
+  height:46px;
+  fill:none;
+  stroke:var(--lapiz);
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  transform:translateY(6px);
+}
+
+.marco{
+  position:relative;
+  padding:9px;
+  background:#e2e7eb;
+  box-shadow:1px 2px 0 rgba(20,30,45,.2),3px 7px 14px rgba(20,30,45,.32);
+  transform:rotate(.8deg);
+}
+.esquina{
+  position:absolute;
+  width:24px;
+  height:24px;
+  background:#27374b;
+  z-index:4;
+}
+.esquina.ai{top:-4px;left:-4px;clip-path:polygon(0 0,100% 0,0 100%)}
+.esquina.ad{top:-4px;right:-4px;clip-path:polygon(0 0,100% 0,100% 100%)}
+.esquina.bi{bottom:-4px;left:-4px;clip-path:polygon(0 0,0 100%,100% 100%)}
+.esquina.bd{bottom:-4px;right:-4px;clip-path:polygon(100% 0,100% 100%,0 100%)}
+
+.pantalla{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  min-height:250px;
+  background:var(--gris);
+  color:#e5e8eb;
+  overflow:hidden;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.pantalla:fullscreen{aspect-ratio:auto;min-height:0;width:100vw;height:100vh;background:#000}
+.pantalla:-webkit-full-screen{aspect-ratio:auto;min-height:0;width:100vw;height:100vh;background:#000}
+.pantalla video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#000;
+  display:none;
+}
+.pantalla.anda video{display:block}
+
+.tapa{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  z-index:2;
+}
+.tapa svg{
+  width:76px;
+  height:76px;
+  overflow:visible;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.28));
+  transition:transform .25s ease,opacity .25s;
+}
+.tapa:hover svg,.tapa:focus-visible svg{transform:scale(1.09)}
+.tapa:focus-visible{outline:2px dashed #e5e8eb;outline-offset:-10px}
+.tapa .espera{
+  position:absolute;
+  bottom:20px;
+  left:0;
+  right:0;
+  font-family:'Special Elite',monospace;
+  font-size:.85rem;
+  color:#e5e8eb;
+  letter-spacing:.06em;
+  display:none;
+}
+.pantalla.cargando .tapa{cursor:default}
+.pantalla.cargando .tapa svg{opacity:.35;transform:none}
+.pantalla.cargando .espera{display:block}
+.pantalla.anda .tapa,.pantalla.falla .tapa{display:none}
+.pantalla.anda.parado .tapa{display:flex;background:rgba(18,26,36,.28)}
+
+.nada{
+  position:absolute;
+  inset:0;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  padding:22px;
+  text-align:center;
+}
+.pantalla.falla .nada{display:flex}
+.nada img{
+  width:88px;
+  height:auto;
+  animation:salto 1.4s ease-in-out infinite;
+  transform-origin:center bottom;
+}
+@keyframes salto{
+  0%,100%{transform:translateY(0) scale(1.08,.92)}
+  12%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-22px) scale(.97,1.03)}
+  88%{transform:translateY(0) scale(1)}
+}
+.nada p{
+  font-size:1.02rem;
+  letter-spacing:.04em;
+  max-width:28ch;
+}
+.barra{
+  width:min(78%,320px);
+  height:14px;
+  background:#9a9fa5;
+  border:1px solid #464b51;
+  border-radius:2px;
+  overflow:hidden;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.3);
+}
+.barra span{
+  display:block;
+  width:100%;
+  height:100%;
+  background-image:linear-gradient(-45deg,#6a7077 25%,transparent 25%,transparent 50%,#6a7077 50%,#6a7077 75%,transparent 75%,transparent);
+  background-size:24px 24px;
+  animation:rayas .9s linear infinite;
+}
+@keyframes rayas{
+  from{background-position:0 0}
+  to{background-position:24px 0}
+}
+
+.mandos{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:3;
+  display:none;
+  align-items:center;
+  gap:10px;
+  padding:26px 16px 12px;
+  background:linear-gradient(to top,rgba(14,21,30,.78),transparent);
+  opacity:0;
+  transition:opacity .3s;
+}
+.pantalla.anda .mandos{display:flex}
+.pantalla.anda.despierto .mandos,.pantalla.anda.parado .mandos{opacity:1}
+.pantalla.anda:not(.despierto):not(.parado){cursor:none}
+.mandos button{
+  flex:none;
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border:0;
+  background:none;
+  color:#e9edf0;
+  cursor:pointer;
+  opacity:.9;
+}
+.mandos button:hover{opacity:1}
+.mandos button:focus-visible{outline:1px dashed #e9edf0;outline-offset:2px}
+.mandos svg{width:20px;height:20px;fill:currentColor;overflow:visible}
+.mandos .linea{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-dale,.ic-callado{display:none}
+.pantalla.parado .ic-dale{display:block}
+.pantalla.parado .ic-para{display:none}
+.pantalla.callado .ic-callado{display:block}
+.pantalla.callado .ic-suena{display:none}
+.riel{
+  position:relative;
+  flex:1;
+  height:20px;
+  display:flex;
+  align-items:center;
+  cursor:pointer;
+  touch-action:none;
+}
+.riel::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:3px;
+  background:rgba(255,255,255,.2);
+}
+.cargado,.lleno{position:absolute;left:0;height:3px;width:0}
+.cargado{background:rgba(255,255,255,.32)}
+.lleno{background:#e3e8ec}
+.lleno::after{
+  content:"";
+  position:absolute;
+  right:-6px;
+  top:50%;
+  width:11px;
+  height:11px;
+  margin-top:-5.5px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 1px 2px rgba(0,0,0,.35);
+}
+.reloj{
+  flex:none;
+  font-size:.78rem;
+  letter-spacing:.03em;
+  color:#e3e8ec;
+  white-space:nowrap;
+}
+
+.creditos{
+  margin-top:46px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+}
+.tira{
+  display:inline-block;
+  padding:7px 16px 6px;
+  font-size:.9rem;
+  color:var(--tinta);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23t)' opacity='.12'/%3E%3C/svg%3E"),
+    #e4e8eb;
+  box-shadow:1px 2px 2px rgba(20,30,45,.22);
+  clip-path:polygon(1% 4%,30% 0,62% 3%,99% 0,98% 34%,100% 70%,99% 100%,70% 97%,38% 100%,0 98%,2% 62%,0 30%);
+}
+.tira.uno{transform:rotate(-1.8deg) translateX(-16px)}
+.tira.dos{transform:rotate(1.3deg) translateX(20px);font-size:.84rem}
+
+@media (max-width:560px){
+  body{padding:60px 14px 70px}
+  .hoja{padding:52px 20px 40px}
+  .retazo{left:-8px;right:10px}
+  .debajo{margin-left:30px;font-size:1.5rem}
+  .mancha{display:none}
+  .clip{right:40px}
+  .ver .lapiz{font-size:2.3rem}
+  .pantalla{aspect-ratio:auto;min-height:0;height:230px}
+  .nada img{width:68px}
+  .mandos{gap:6px;padding:22px 10px 8px}
+  .reloj{font-size:.7rem}
+  .tira{font-size:.8rem}
+  .tira.uno,.tira.dos{transform:rotate(-1deg)}
+}
+</style>
+</head>
+<body>
+<svg class="oculto" aria-hidden="true" focusable="false">
+  <filter id="roto" x="-4%" y="-4%" width="108%" height="108%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04 0.06" numOctaves="5" seed="11" result="ruido"/>
+    <feDisplacementMap in="SourceGraphic" in2="ruido" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="borron" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="3" seed="4" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<div class="mesa">
+  <div class="retazo"></div>
+
+  <main class="hoja">
+    <div class="cinta"></div>
+    <svg class="clip" viewBox="0 0 26 74" aria-hidden="true">
+      <path class="sombra" d="M8 22 V60 a6 6 0 0 0 12 0 V12 a9 9 0 0 0 -18 0 V56"/>
+      <path class="alambre" d="M8 22 V60 a6 6 0 0 0 12 0 V12 a9 9 0 0 0 -18 0 V56"/>
+    </svg>
+    <svg class="mancha" viewBox="0 0 100 100" aria-hidden="true">
+      <g filter="url(#borron)">
+        <circle cx="50" cy="50" r="38" fill="rgba(60,85,115,.05)" stroke="rgba(60,85,115,.2)" stroke-width="4"/>
+        <circle cx="50" cy="50" r="33" fill="none" stroke="rgba(60,85,115,.08)" stroke-width="2"/>
+      </g>
+    </svg>
+
+    <h1>Liebestraum</h1>
+    <span class="lapiz debajo">(sueño de amor... o algo así)</span>
+
+    <section class="sinopsis">
+      <h2>Sinopsis</h2>
+      <svg class="trazo" viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6 C 25 3, 45 8, 70 5 S 105 3, 118 7"/></svg>
+      <p>Ehh hola? Eres mujer y me comentaste? Uff, bueno te sere sincero. Siendo honesto en este momento no estoy buscando una relación, perdón si te ilucione y por eso me comentaste. Pero la verdad en este moment estoy muy enfocado en Fortnite, la verdad eres con la primera mujer con la que hablo desde 2015, y pues lamentablemente rompítus ilusiones. Una vez mas te pido una disculpa se que mi flow atrapa miradas pero no puedo evitarlo, bueno te dejo tengo que ir a leer libros sobre filosofía<br>- Pachecho</p>
+    </section>
+
+    <div class="ver">
+      <span class="lapiz">Ver ahora</span>
+      <svg class="flecha" viewBox="0 0 60 46" aria-hidden="true">
+        <path d="M4 8 C 22 2, 44 8, 46 24 C 47 32, 44 37, 40 41"/>
+        <path d="M33 35 L40 42 L46 34"/>
+      </svg>
+    </div>
+
+    <div class="marco">
+      <span class="esquina ai"></span>
+      <span class="esquina ad"></span>
+      <span class="esquina bi"></span>
+      <span class="esquina bd"></span>
+
+      <div class="pantalla" id="pantalla">
+        <video id="peli" playsinline preload="none"></video>
+
+        <button class="tapa" id="tapa" type="button" aria-label="Reproducir">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <polygon points="30,18 84,50 30,82" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+          </svg>
+          <span class="espera">cargando...</span>
+        </button>
+
+        <div class="nada">
+          <img src="/novideo.png" alt="">
+          <p>Video no disponible</p>
+          <div class="barra"><span></span></div>
+        </div>
+
+        <div class="mandos">
+          <button id="pausa" type="button" aria-label="Pausar o reproducir">
+            <svg class="ic-para" viewBox="0 0 24 24"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>
+            <svg class="ic-dale" viewBox="0 0 24 24"><path d="M7 4.5 L19.5 12 L7 19.5 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="riel" id="riel">
+            <div class="cargado" id="cargado"></div>
+            <div class="lleno" id="lleno"></div>
+          </div>
+          <span class="reloj" id="reloj">0:00 / 0:00</span>
+          <button id="mudo" type="button" aria-label="Silenciar">
+            <svg class="ic-suena" viewBox="0 0 24 24"><path d="M3 9.5 V14.5 H7 L12 19 V5 L7 9.5 Z"/><path class="linea" d="M15.5 9 a4 4 0 0 1 0 6"/><path class="linea" d="M18 6.5 a7.5 7.5 0 0 1 0 11"/></svg>
+            <svg class="ic-callado" viewBox="0 0 24 24"><path d="M3 9.5 V14.5 H7 L12 19 V5 L7 9.5 Z"/><path class="linea" d="M16 9.5 L21 14.5 M21 9.5 L16 14.5"/></svg>
+          </button>
+          <button id="grande" type="button" aria-label="Pantalla completa">
+            <svg viewBox="0 0 24 24"><path class="linea" d="M4 9 V4 H9 M15 4 H20 V9 M20 15 V20 H15 M9 20 H4 V15"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="creditos">
+      <span class="tira uno">un cortometraje de Fernando Pacheco</span>
+      <span class="tira dos">desarrollado por Gabriel Guajardo</span>
+    </div>
+  </main>
+</div>
+
+<script>
+var pantalla = document.getElementById('pantalla');
+var peli = document.getElementById('peli');
+var tapa = document.getElementById('tapa');
+var pausa = document.getElementById('pausa');
+var riel = document.getElementById('riel');
+var lleno = document.getElementById('lleno');
+var cargado = document.getElementById('cargado');
+var reloj = document.getElementById('reloj');
+var mudo = document.getElementById('mudo');
+var grande = document.getElementById('grande');
+var empezo = false;
+var arrastre = false;
+var siesta;
+
+function hora(s) {
+  if (!isFinite(s) || s < 0) s = 0;
+  s = Math.floor(s);
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function pintar() {
+  var d = peli.duration || 0;
+  lleno.style.width = (d ? peli.currentTime / d * 100 : 0) + '%';
+  reloj.textContent = hora(peli.currentTime) + ' / ' + hora(d);
+}
+
+function fallo() {
+  if (!empezo) return;
+  pantalla.classList.remove('cargando', 'anda', 'parado');
+  pantalla.classList.add('falla');
+}
+
+function alternar() {
+  if (peli.paused || peli.ended) peli.play(); else peli.pause();
+}
+
+function arrancar() {
+  if (pantalla.classList.contains('cargando')) return;
+  if (empezo) { peli.play(); return; }
+  empezo = true;
+  pantalla.classList.add('cargando');
+  peli.src = '/liebestraum.mp4';
+  var p = peli.play();
+  if (p && p.catch) {
+    p.catch(function (e) {
+      if (peli.error || (e && e.name === 'NotSupportedError')) fallo();
+    });
+  }
+}
+
+function despertar() {
+  pantalla.classList.add('despierto');
+  clearTimeout(siesta);
+  siesta = setTimeout(function () {
+    if (!arrastre) pantalla.classList.remove('despierto');
+  }, 2200);
+}
+
+function ir(e) {
+  var r = riel.getBoundingClientRect();
+  var x = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1);
+  lleno.style.width = (x * 100) + '%';
+  if (peli.duration) {
+    peli.currentTime = x * peli.duration;
+    reloj.textContent = hora(peli.currentTime) + ' / ' + hora(peli.duration);
+  }
+}
+
+tapa.addEventListener('click', arrancar);
+pausa.addEventListener('click', alternar);
+peli.addEventListener('click', alternar);
+
+peli.addEventListener('loadeddata', function () {
+  pantalla.classList.remove('cargando');
+  pantalla.classList.add('anda');
+  if (peli.paused) pantalla.classList.add('parado');
+  despertar();
+});
+peli.addEventListener('error', fallo);
+peli.addEventListener('play', function () { pantalla.classList.remove('parado'); despertar(); });
+peli.addEventListener('pause', function () { pantalla.classList.add('parado'); });
+peli.addEventListener('ended', function () { pantalla.classList.add('parado'); });
+peli.addEventListener('loadedmetadata', pintar);
+peli.addEventListener('timeupdate', function () { if (!arrastre) pintar(); });
+peli.addEventListener('progress', function () {
+  if (peli.buffered.length && peli.duration) {
+    cargado.style.width = (peli.buffered.end(peli.buffered.length - 1) / peli.duration * 100) + '%';
+  }
+});
+
+riel.addEventListener('pointerdown', function (e) {
+  arrastre = true;
+  riel.setPointerCapture(e.pointerId);
+  ir(e);
+});
+riel.addEventListener('pointermove', function (e) { if (arrastre) ir(e); });
+riel.addEventListener('pointerup', function () { arrastre = false; despertar(); });
+riel.addEventListener('pointercancel', function () { arrastre = false; });
+
+pantalla.addEventListener('pointermove', despertar);
+pantalla.addEventListener('pointerdown', despertar);
+
+mudo.addEventListener('click', function () {
+  peli.muted = !peli.muted;
+  pantalla.classList.toggle('callado', peli.muted);
+});
+
+grande.addEventListener('click', function () {
+  var activo = document.fullscreenElement || document.webkitFullscreenElement;
+  if (activo) {
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    return;
+  }
+  if (pantalla.requestFullscreen) pantalla.requestFullscreen();
+  else if (pantalla.webkitRequestFullscreen) pantalla.webkitRequestFullscreen();
+  else if (peli.webkitEnterFullscreen) peli.webkitEnterFullscreen();
+});
+
+document.addEventListener('keydown', function (e) {
+  if (!pantalla.classList.contains('anda')) return;
+  var t = e.target.tagName;
+  if (t === 'BUTTON' || t === 'INPUT' || t === 'TEXTAREA') return;
+  if (e.code === 'Space' || e.key === 'k') { e.preventDefault(); alternar(); despertar(); }
+  if (e.key === 'ArrowRight') { peli.currentTime = Math.min(peli.currentTime + 5, peli.duration || 0); despertar(); }
+  if (e.key === 'ArrowLeft') { peli.currentTime = Math.max(peli.currentTime - 5, 0); despertar(); }
+  if (e.key === 'm') mudo.click();
+  if (e.key === 'f') grande.click();
+});
+</script>
+</body>
+</html>
