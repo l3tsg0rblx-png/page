@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="cerrado">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +29,7 @@ body{
   display:flex;
   align-items:flex-start;
   justify-content:center;
-  padding:60px 16px 90px;
+  padding:60px 16px 150px;
   overflow-x:hidden;
 }
 body::before{
@@ -69,55 +69,8 @@ body::before{
     repeating-linear-gradient(97deg,transparent 0 38px,rgba(13,20,29,.35) 38px 40px,transparent 40px 71px),
     radial-gradient(ellipse at center,rgba(130,160,200,.42),rgba(80,110,150,.14) 58%,transparent 74%);
   filter:blur(16px);
-  opacity:.55;
-}
-.suelto{
-  position:absolute;
-  width:230px;
-  height:300px;
-  background:linear-gradient(170deg,#62758a,#4b5d71);
-  opacity:.42;
-}
-.suelto::after{
-  content:"";
-  position:absolute;
-  inset:46px 30px 60px;
-  background:repeating-linear-gradient(to bottom,rgba(18,27,40,.45) 0 2px,transparent 2px 15px);
-}
-.suelto.a{top:7%;right:-70px;transform:rotate(15deg)}
-.suelto.b{bottom:-90px;left:5%;width:200px;height:260px;transform:rotate(-24deg);opacity:.4}
-.cine{
-  position:absolute;
-  bottom:16%;
-  right:-110px;
-  width:580px;
-  height:86px;
-  transform:rotate(-24deg);
-  background-color:#0a0f15;
-  background-image:repeating-linear-gradient(90deg,transparent 0 5px,rgba(75,100,132,.38) 5px 97px,transparent 97px 102px);
-  background-size:100% 50px;
-  background-position:0 18px;
-  background-repeat:no-repeat;
   opacity:.6;
-}
-.cine::before,.cine::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  height:8px;
-  background:repeating-linear-gradient(90deg,rgba(165,185,205,.38) 0 9px,transparent 9px 21px);
-}
-.cine::before{top:5px}
-.cine::after{bottom:5px}
-.lapicero{
-  position:absolute;
-  top:58%;
-  left:-30px;
-  width:300px;
-  height:20px;
-  transform:rotate(34deg);
-  opacity:.6;
+  will-change:transform;
 }
 .lluvia{
   position:fixed;
@@ -729,7 +682,7 @@ h1{
 .volver:hover,.volver:focus-visible{text-decoration:underline wavy;text-underline-offset:4px;outline:none}
 
 @media (max-width:560px){
-  body{padding:40px 14px 70px}
+  body{padding:40px 14px 140px}
   .indice{gap:10px 10px;margin-bottom:30px}
   .indice button{font-size:.76rem;padding:8px 12px 7px}
   .hoja{padding:52px 20px 40px}
@@ -752,8 +705,171 @@ h1{
   .ficha.uno,.ficha.dos{transform:rotate(-1deg)}
   .luz{width:120vw}
 }
+html.cerrado,html.cerrado body{overflow:hidden}
+.portada{
+  position:fixed;
+  inset:0;
+  z-index:30;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(ellipse at 50% 45%,rgba(24,36,52,.9),rgba(9,13,19,.97) 75%);
+  transition:opacity .9s ease,visibility 0s .9s;
+}
+html.abierto .portada{opacity:0;visibility:hidden}
+.iniciar{
+  position:relative;
+  border:0;
+  background:none;
+  padding:18px 34px 16px;
+  font-family:'Special Elite','Courier New',monospace;
+  font-size:clamp(1rem,3.6vw,1.25rem);
+  letter-spacing:.08em;
+  color:var(--tinta);
+  filter:drop-shadow(3px 7px 8px rgba(0,0,0,.55));
+  transform:rotate(-2deg);
+  transition:transform .3s ease;
+}
+.iniciar::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(172deg,#dbe2e8,#bcc8d3);
+  clip-path:polygon(1% 8%,18% 2%,37% 6%,58% 0,79% 5%,99% 1%,97% 38%,100% 72%,98% 97%,77% 94%,55% 100%,33% 95%,12% 99%,0 94%,2% 60%,0 30%);
+}
+.iniciar:hover,.iniciar:focus-visible{transform:rotate(1deg) scale(1.04);outline:none}
+.iniciar span{
+  display:block;
+  margin-top:6px;
+  font-family:'Reenie Beanie',cursive;
+  font-size:1.35rem;
+  letter-spacing:0;
+  color:var(--lapiz);
+}
+.mesa{transition:opacity 1s ease .25s,transform 1.1s cubic-bezier(.2,.7,.3,1) .25s}
+html.cerrado .mesa{opacity:0;transform:translateY(40px)}
+
+.tocadiscos{
+  position:fixed;
+  left:50%;
+  bottom:14px;
+  z-index:35;
+  width:min(430px,calc(100% - 24px));
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:12px 16px 12px 12px;
+  color:var(--tinta);
+  transform:translate(-50%,140%);
+  transition:transform .9s cubic-bezier(.2,.7,.3,1) .6s;
+}
+.tocadiscos::after{
+  content:"";
+  position:absolute;
+  inset:8px 2px -4px 10px;
+  z-index:-2;
+  background:rgba(0,0,0,.5);
+  filter:blur(9px);
+}
+html.abierto .tocadiscos{transform:translate(-50%,0)}
+.tocadiscos::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(175deg,#d7dee5,#bac6d1);
+  clip-path:polygon(0 6%,22% 1%,47% 5%,73% 0,100% 4%,99% 50%,100% 96%,76% 100%,51% 95%,26% 100%,1% 97%,0 52%);
+}
+.disco{
+  position:relative;
+  flex:none;
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle,#c9d3dc 0 9%,#1a2330 10% 13%,transparent 14%),
+    repeating-radial-gradient(circle,#141b25 0 2px,#1d2633 2px 3px);
+  box-shadow:0 2px 4px rgba(0,0,0,.45);
+  animation:gira 3.2s linear infinite;
+  animation-play-state:paused;
+  will-change:transform;
+}
+.tocadiscos.suena .disco{animation-play-state:running}
+.disco img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+@keyframes gira{to{transform:rotate(360deg)}}
+.surco{flex:1;min-width:0}
+.tema{
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:1.25rem;
+  line-height:1;
+  color:var(--azul);
+}
+.autor{
+  display:block;
+  font-family:'Reenie Beanie',cursive;
+  font-size:1.2rem;
+  line-height:1;
+  color:var(--lapiz);
+  margin:2px 0 6px;
+}
+.aguja{display:flex;align-items:center;gap:8px}
+.driel{
+  position:relative;
+  flex:1;
+  height:16px;
+  display:flex;
+  align-items:center;
+  touch-action:none;
+}
+.driel::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:3px;
+  background:rgba(46,68,96,.22);
+}
+.dlleno{position:absolute;left:0;height:3px;width:0;background:var(--azul)}
+.dlleno::after{
+  content:"";
+  position:absolute;
+  right:-5px;
+  top:50%;
+  width:9px;
+  height:9px;
+  margin-top:-4.5px;
+  border-radius:50%;
+  background:var(--azul);
+}
+.dreloj{flex:none;font-size:.7rem;color:#3a4a5e;white-space:nowrap}
+.botones{display:flex;gap:4px;flex:none}
+.botones button{
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border:0;
+  background:none;
+  color:var(--azul);
+}
+.botones button:focus-visible{outline:1px dashed var(--azul);outline-offset:1px}
+.botones svg{width:20px;height:20px;fill:currentColor;overflow:visible}
+.botones .linea{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.d-dale,.d-callado{display:none}
+.tocadiscos:not(.suena) .d-dale{display:block}
+.tocadiscos:not(.suena) .d-para{display:none}
+.tocadiscos.callado .d-callado{display:block}
+.tocadiscos.callado .d-suena{display:none}
+@media (max-width:420px){
+  .disco{width:52px;height:52px}
+  .tocadiscos{gap:10px;padding:10px 10px 10px 10px}
+  .dreloj{display:none}
+}
+
 *{cursor:url('/cursor.png') 0 0,auto !important}
-a,button,.riel,.riel *,video,.foto{cursor:url('/cursor.png') 0 0,pointer !important}
+a,button,.riel,.riel *,video,.foto,.driel,.driel *{cursor:url('/cursor.png') 0 0,pointer !important}
 .pantalla.anda:not(.despierto):not(.parado),.pantalla.anda:not(.despierto):not(.parado) *{cursor:none !important}
 </style>
 </head>
@@ -767,22 +883,36 @@ a,button,.riel,.riel *,video,.foto{cursor:url('/cursor.png') 0 0,pointer !import
 
 <div class="fondo" aria-hidden="true">
   <div class="luz"></div>
-  <div class="suelto a"></div>
-  <div class="cine"></div>
-  <svg class="lapicero" viewBox="0 0 300 20">
-    <polygon points="0,10 26,2 26,18" fill="#8e9ba8"/>
-    <polygon points="0,10 8,7.5 8,12.5" fill="#141a22"/>
-    <rect x="26" y="2" width="236" height="16" fill="#2f4259"/>
-    <rect x="26" y="7.5" width="236" height="1.5" fill="#3d5470"/>
-    <rect x="26" y="13" width="236" height="1.5" fill="#263649"/>
-    <rect x="262" y="1.5" width="20" height="17" fill="#7c8894"/>
-    <rect x="266" y="1.5" width="2" height="17" fill="#5d6873"/>
-    <rect x="274" y="1.5" width="2" height="17" fill="#5d6873"/>
-    <rect x="282" y="2.5" width="16" height="15" rx="2" fill="#6f7f92"/>
-  </svg>
 </div>
 
 <canvas class="lluvia" id="lluvia" aria-hidden="true"></canvas>
+
+<div class="portada" id="portada">
+  <button class="iniciar" id="iniciar" type="button" autofocus>iniciar liebestraum</button>
+</div>
+
+<div class="tocadiscos" id="tocadiscos" aria-label="Reproductor de música">
+  <audio id="disco" src="/liebe.mp3" preload="auto" loop></audio>
+  <div class="disco"><img src="/vinilo.png" alt="" onerror="this.remove()"></div>
+  <div class="surco">
+    <div class="tema">liebestraum</div>
+    <span class="autor">ataquemos</span>
+    <div class="aguja">
+      <div class="driel" id="driel"><div class="dlleno" id="dlleno"></div></div>
+      <span class="dreloj" id="dreloj">0:00</span>
+    </div>
+  </div>
+  <div class="botones">
+    <button id="dpausa" type="button" aria-label="Pausar o reproducir música">
+      <svg class="d-para" viewBox="0 0 24 24"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>
+      <svg class="d-dale" viewBox="0 0 24 24"><path d="M7 4.5 L19.5 12 L7 19.5 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    </button>
+    <button id="dmudo" type="button" aria-label="Silenciar música">
+      <svg class="d-suena" viewBox="0 0 24 24"><path d="M3 9.5 V14.5 H7 L12 19 V5 L7 9.5 Z"/><path class="linea" d="M15.5 9 a4 4 0 0 1 0 6"/><path class="linea" d="M18 6.5 a7.5 7.5 0 0 1 0 11"/></svg>
+      <svg class="d-callado" viewBox="0 0 24 24"><path d="M3 9.5 V14.5 H7 L12 19 V5 L7 9.5 Z"/><path class="linea" d="M16 9.5 L21 14.5 M21 9.5 L16 14.5"/></svg>
+    </button>
+  </div>
+</div>
 
 <div class="mesa">
   <nav class="indice">
@@ -1038,7 +1168,7 @@ peli.addEventListener('loadeddata', function () {
   despertar();
 });
 peli.addEventListener('error', fallo);
-peli.addEventListener('play', function () { pantalla.classList.remove('parado'); despertar(); });
+peli.addEventListener('play', function () { pantalla.classList.remove('parado'); despertar(); if (!disco.paused) disco.pause(); });
 peli.addEventListener('pause', function () { pantalla.classList.add('parado'); });
 peli.addEventListener('ended', function () { pantalla.classList.add('parado'); });
 peli.addEventListener('loadedmetadata', pintar);
@@ -1243,6 +1373,67 @@ if (!quieto) {
   window.addEventListener('resize', medir);
   requestAnimationFrame(llover);
 }
+var luz = document.querySelector('.luz');
+var luzPendiente = false;
+function moverLuz() {
+  luzPendiente = false;
+  luz.style.transform = 'translate3d(0,' + (-window.scrollY * .5) + 'px,0) skewX(-16deg) rotate(-5deg)';
+}
+window.addEventListener('scroll', function () {
+  if (!luzPendiente) { luzPendiente = true; requestAnimationFrame(moverLuz); }
+}, { passive: true });
+
+var disco = document.getElementById('disco');
+var tocadiscos = document.getElementById('tocadiscos');
+var dpausa = document.getElementById('dpausa');
+var dmudo = document.getElementById('dmudo');
+var driel = document.getElementById('driel');
+var dlleno = document.getElementById('dlleno');
+var dreloj = document.getElementById('dreloj');
+var darrastre = false;
+
+function dpintar() {
+  var d = disco.duration || 0;
+  if (!darrastre) dlleno.style.width = (d ? disco.currentTime / d * 100 : 0) + '%';
+  dreloj.textContent = hora(disco.currentTime);
+}
+function dir(e) {
+  var r = driel.getBoundingClientRect();
+  var x = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1);
+  dlleno.style.width = (x * 100) + '%';
+  if (disco.duration) disco.currentTime = x * disco.duration;
+}
+
+disco.addEventListener('play', function () {
+  tocadiscos.classList.add('suena');
+  if (!peli.paused) peli.pause();
+});
+disco.addEventListener('pause', function () { tocadiscos.classList.remove('suena'); });
+disco.addEventListener('timeupdate', dpintar);
+disco.addEventListener('loadedmetadata', dpintar);
+
+dpausa.addEventListener('click', function () {
+  if (disco.paused) disco.play().catch(function () {}); else disco.pause();
+});
+dmudo.addEventListener('click', function () {
+  disco.muted = !disco.muted;
+  tocadiscos.classList.toggle('callado', disco.muted);
+});
+driel.addEventListener('pointerdown', function (e) {
+  darrastre = true;
+  driel.setPointerCapture(e.pointerId);
+  dir(e);
+});
+driel.addEventListener('pointermove', function (e) { if (darrastre) dir(e); });
+driel.addEventListener('pointerup', function () { darrastre = false; });
+driel.addEventListener('pointercancel', function () { darrastre = false; });
+
+document.getElementById('iniciar').addEventListener('click', function () {
+  document.documentElement.classList.remove('cerrado');
+  document.documentElement.classList.add('abierto');
+  window.scrollTo(0, 0);
+  disco.play().catch(function () {});
+});
 </script>
 </body>
 </html>
